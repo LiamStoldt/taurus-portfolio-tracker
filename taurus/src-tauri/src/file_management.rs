@@ -75,8 +75,9 @@ impl BuySellRecord {
 
 // directory management
 #[tauri::command]
-pub fn create_new_portfolio(portfolio_name: String) -> Result<(), std::io::Error> {
-    fs::create_dir(format!("./data/portfolios/{}", portfolio_name))
+pub fn create_new_portfolio(portfolio_name: String) -> () {
+    let _res = fs::create_dir(format!("./data/portfolios/{}", portfolio_name)).unwrap();
+    ()
 }
 
 

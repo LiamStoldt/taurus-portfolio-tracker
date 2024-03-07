@@ -30,7 +30,11 @@ fn main() {
 
     // build tauri
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![
+            greet,
+            file_management::create_new_portfolio,
+            file_management::get_buy_sell_records
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
